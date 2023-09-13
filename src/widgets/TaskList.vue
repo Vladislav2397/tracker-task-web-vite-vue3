@@ -16,7 +16,7 @@ import { CompleteTask, RemoveTask } from '../features/task'
 
 import { TaskRow } from '../entities/task'
 
-import List from '../shared/ui/List.vue'
+import { List } from '../shared/ui/List'
 
 export default {
     components: {

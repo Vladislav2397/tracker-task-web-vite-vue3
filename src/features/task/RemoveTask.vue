@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import Action from '../../shared/ui/Action.vue'
+import { Action } from '../../shared/ui/Action'
 
 export default {
     components: {

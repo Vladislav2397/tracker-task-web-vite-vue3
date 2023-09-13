@@ -22,7 +22,7 @@ import TaskList from './widgets/TaskList.vue'
 
 import { CreateTaskForm } from './features/task'
 
-import Section from './shared/ui/Section.vue'
+import { Section } from './shared/ui/Section'
 
 export default {
     components: {

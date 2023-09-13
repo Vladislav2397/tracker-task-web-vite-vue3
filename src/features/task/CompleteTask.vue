@@ -3,7 +3,8 @@
 </template>
 
 <script lang="ts">
-import Action from '../../shared/ui/Action.vue'
+import { Action } from '../../shared/ui/Action'
+import { Task } from '../../shared/shared-kernel'
 
 export default {
     components: {
@@ -16,7 +17,7 @@ export default {
 import { useToggleTask } from './model'
 
 const { toggleTask } = useToggleTask()
-const props = defineProps<{ task: { id: number } }>()
+const props = defineProps<{ task: Task }>()
 
 function onClick() {
     toggleTask(props.task)
