@@ -1,5 +1,5 @@
 <template>
-    <div :class="classes"></div>
+    <div :class="classes" data-testid="Action"></div>
 </template>
 
 <script lang="ts" setup>

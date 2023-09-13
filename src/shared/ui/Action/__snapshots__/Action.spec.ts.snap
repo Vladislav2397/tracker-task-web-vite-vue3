@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`shared/ui/Action component > Snapshot for view critical 1`] = `"<div data-v-7c2afad0=\\"\\" class=\\"action action--critical\\" data-testid=\\"Action\\"></div>"`;
+
+exports[`shared/ui/Action component > Snapshot for view success 1`] = `"<div data-v-7c2afad0=\\"\\" class=\\"action action--success\\" data-testid=\\"Action\\"></div>"`;

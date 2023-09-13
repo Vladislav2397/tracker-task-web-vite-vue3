@@ -1,5 +1,5 @@
 <template>
-    <div class="section">
+    <div data-testid="Section" class="section">
         <slot />
     </div>
 </template>

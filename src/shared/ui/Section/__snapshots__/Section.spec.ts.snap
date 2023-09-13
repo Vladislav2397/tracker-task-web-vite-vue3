@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`shared/ui/Section component > Snapshot 1`] = `"<div data-v-8736e483=\\"\\" data-testid=\\"Section\\" class=\\"section\\"></div>"`;
