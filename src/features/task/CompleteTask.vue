@@ -13,9 +13,12 @@ export default {
 </script>
 
 <script lang="ts" setup>
+import { useToggleTask } from './model'
+
+const { toggleTask } = useToggleTask()
 const props = defineProps<{ task: { id: number } }>()
 
 function onClick() {
-    //
+    toggleTask(props.task)
 }
 </script>

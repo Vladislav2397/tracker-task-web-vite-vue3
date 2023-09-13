@@ -1,4 +1,5 @@
 import { taskModel } from '../../entities/task'
+import { Task } from '../../shared/shared-kernel'
 
 const api = {
     task: {
@@ -8,7 +9,7 @@ const api = {
         async update(taskId: any, fields: Record<string, unknown>) {
             return { status: true }
         },
-        async create(task: any) {
+        async create(taskName: string) {
             return { id: `${Date.now()}`, status: true }
         },
     },
@@ -37,16 +38,18 @@ export const useCreateTask = () => {
 export const useToggleTask = () => {
     const taskStore = taskModel.useTaskStore()
 
-    async function toggleTask(task: any) {
+    async function toggleTask(task: Task) {
         const updatedTask = taskModel.toggleTask(task)
 
+        console.log('toggleTask', updatedTask, task)
+
         const response = await api.task.update(updatedTask.id, {
-            isComplete: updatedTask.isComplete,
+            isCompleted: updatedTask.isCompleted,
         })
 
         if (!response.status) {
             console.error(
-                `create task with name ${taskName} is not success (API_ERROR)`
+                `create task with name ${task} is not success (API_ERROR)`
             )
         }
 

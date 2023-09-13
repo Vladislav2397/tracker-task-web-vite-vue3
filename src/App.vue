@@ -3,20 +3,14 @@
         <Header />
 
         <div class="app__content">
-            <Section class="app__form">
+            <Section>
                 <CreateTaskForm />
             </Section>
-            <Section class="app__form">
-                <List :list="tasks">
-                    <template #default="{ item }">
-                        <TaskRow :task="item">
-                            <div class="app__row">
-                                <CompleteTask :task="item" />
-                                <RemoveTask :task="item" />
-                            </div>
-                        </TaskRow>
-                    </template>
-                </List>
+            <Section>
+                <TaskList filter="uncompleted" />
+            </Section>
+            <Section>
+                <TaskList filter="completed" />
             </Section>
         </div>
     </div>
@@ -24,33 +18,24 @@
 
 <script lang="ts">
 import Header from './widgets/Header.vue'
+import TaskList from './widgets/TaskList.vue'
 
-import { TaskRow } from './entities/task'
-
-import { CompleteTask, RemoveTask, CreateTaskForm } from './features/task'
+import { CreateTaskForm } from './features/task'
 
 import Section from './shared/ui/Section.vue'
-import List from './shared/ui/List.vue'
 
 export default {
     components: {
         Header,
         Section,
-        List,
-        TaskRow,
-        CompleteTask,
-        RemoveTask,
+        TaskList,
         CreateTaskForm,
     },
 }
 </script>
 
 <script setup lang="ts">
-import { taskModel } from './entities/task'
-
-const taskStore = taskModel.useTaskStore()
-
-const tasks = taskStore.list
+//
 </script>
 
 <style scoped>
@@ -69,19 +54,5 @@ const tasks = taskStore.list
     margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
-}
-
-.app__form {
-    display: flex;
-    gap: 12px;
-}
-
-.app__input {
-    flex-grow: 1;
-}
-
-.app__row {
-    display: flex;
-    gap: 12px;
 }
 </style>

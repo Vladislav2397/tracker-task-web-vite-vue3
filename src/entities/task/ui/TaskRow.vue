@@ -1,6 +1,6 @@
 <template>
     <div class="task-row">
-        <h4 class="task-row__name">{{ task.name }}</h4>
+        <h4 :class="classes">{{ task.name }}</h4>
         <div class="task-row__actions">
             <slot />
         </div>
@@ -8,7 +8,15 @@
 </template>
 
 <script lang="ts" setup>
-defineProps<{ task: { id: number; name: string } }>()
+import { computed } from 'vue'
+
+const props =
+    defineProps<{ task: { id: number; name: string; isCompleted: boolean } }>()
+
+const classes = computed(() => [
+    'task-row__name',
+    { 'task-row__name--through': props.task.isCompleted },
+])
 </script>
 
 <style scoped>
@@ -29,6 +37,10 @@ defineProps<{ task: { id: number; name: string } }>()
     line-height: 18px;
     font-family: sans-serif;
     color: #fff;
+}
+
+.task-row__name--through {
+    text-decoration: line-through;
 }
 
 @media (min-width: 768px) {

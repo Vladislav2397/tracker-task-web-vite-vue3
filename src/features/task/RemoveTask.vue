@@ -5,8 +5,6 @@
 <script lang="ts">
 import Action from '../../shared/ui/Action.vue'
 
-import { useRemoveTask } from './model'
-
 export default {
     components: {
         Action,
@@ -15,6 +13,8 @@ export default {
 </script>
 
 <script lang="ts" setup>
+import { useRemoveTask } from './model'
+
 const props = defineProps<{ task: { id: number } }>()
 
 const { removeTask } = useRemoveTask()
