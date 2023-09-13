@@ -13,8 +13,8 @@ const classes = computed(() => ['action', `action--${props.view}`])
 
 <style scoped>
 .action {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     border-radius: 4px;
 }
 
@@ -23,5 +23,13 @@ const classes = computed(() => ['action', `action--${props.view}`])
 }
 .action--critical {
     background-color: red;
+}
+
+@media (min-width: 768px) {
+    .action {
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+    }
 }
 </style>

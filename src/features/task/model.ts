@@ -41,8 +41,6 @@ export const useToggleTask = () => {
     async function toggleTask(task: Task) {
         const updatedTask = taskModel.toggleTask(task)
 
-        console.log('toggleTask', updatedTask, task)
-
         const response = await api.task.update(updatedTask.id, {
             isCompleted: updatedTask.isCompleted,
         })
