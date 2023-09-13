@@ -34,10 +34,6 @@ export default {
 }
 </script>
 
-<script setup lang="ts">
-//
-</script>
-
 <style scoped>
 .app {
     background-color: #121212;
