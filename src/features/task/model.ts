@@ -3,13 +3,13 @@ import { Task } from '../../shared/shared-kernel'
 
 const api = {
     task: {
-        async remove(taskId: any) {
+        async remove(_taskId: string) {
             return { status: true }
         },
-        async update(taskId: any, fields: Record<string, unknown>) {
+        async update(_taskId: string, _fields: Record<string, unknown>) {
             return { status: true }
         },
-        async create(taskName: string) {
+        async create(_taskName: string) {
             return { id: `${Date.now()}`, status: true }
         },
     },
@@ -62,7 +62,7 @@ export const useToggleTask = () => {
 export const useRemoveTask = () => {
     const taskStore = taskModel.useTaskStore()
 
-    async function removeTask(task: any) {
+    async function removeTask(task: Task) {
         const response = await api.task.remove(task.id)
 
         if (!response.status) {
