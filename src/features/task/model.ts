@@ -1,0 +1,77 @@
+import { taskModel } from '../../entities/task'
+
+const api = {
+    task: {
+        async remove(taskId: any) {
+            return { status: true }
+        },
+        async update(taskId: any, fields: Record<string, unknown>) {
+            return { status: true }
+        },
+        async create(task: any) {
+            return { id: `${Date.now()}`, status: true }
+        },
+    },
+}
+
+export const useCreateTask = () => {
+    const taskStore = taskModel.useTaskStore()
+
+    async function createTask(taskName: string) {
+        const response = await api.task.create(taskName)
+
+        if (!response.status) {
+            console.error(
+                `create task with name ${taskName} is not success (API_ERROR)`
+            )
+        }
+
+        taskStore.addTask(taskModel.createTask(taskName, response.id))
+    }
+
+    return {
+        createTask,
+    }
+}
+
+export const useToggleTask = () => {
+    const taskStore = taskModel.useTaskStore()
+
+    async function toggleTask(task: any) {
+        const updatedTask = taskModel.toggleTask(task)
+
+        const response = await api.task.update(updatedTask.id, {
+            isComplete: updatedTask.isComplete,
+        })
+
+        if (!response.status) {
+            console.error(
+                `create task with name ${taskName} is not success (API_ERROR)`
+            )
+        }
+
+        taskStore.updateTask(updatedTask)
+    }
+
+    return {
+        toggleTask,
+    }
+}
+
+export const useRemoveTask = () => {
+    const taskStore = taskModel.useTaskStore()
+
+    async function removeTask(task: any) {
+        const response = await api.task.remove(task.id)
+
+        if (!response.status) {
+            console.error(`remove task ${task} is not success (API_ERROR)`)
+        }
+
+        taskStore.removeTask(task)
+    }
+
+    return {
+        removeTask,
+    }
+}
