@@ -1,9 +1,13 @@
 {
     "name": "vite-vue-typescript-starter",
     "private": true,
-    "version": "0.0.0",
+    "version": "1.0.0",
     "type": "module",
-    "scripts": {
+    "author": {
+        "name": "Vladislav",
+        "email": "valdiszz53@gmail.com"
+    },
+    "scripts": { 
         "dev": "vite",
         "build": "vue-tsc && vite build",
         "preview": "vite preview",
