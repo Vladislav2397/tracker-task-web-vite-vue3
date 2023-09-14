@@ -1,9 +1,9 @@
 <template>
-    <Action view="critical" @click="onClick" />
+    <Action data-testid="Action" view="critical" @click="onClick" />
 </template>
 
 <script lang="ts">
-import { Action } from '../../shared/ui/Action'
+import { Action } from '../../../shared/ui/Action'
 
 export default {
     components: {
@@ -13,7 +13,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { useRemoveTask } from './model'
+import { useRemoveTask } from '../model'
 
 const props = defineProps<{ task: { id: number } }>()
 

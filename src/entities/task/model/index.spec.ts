@@ -52,4 +52,7 @@ describe('entities/task model', () => {
         taskStore.removeTask(originTask)
         expect(taskStore.list).toStrictEqual([initialValue[1]])
     })
+
+    it.todo('should return new task by createTask fn')
+    it.todo('should toggle `isCompleted` for gived task in toggleTask fn')
 })

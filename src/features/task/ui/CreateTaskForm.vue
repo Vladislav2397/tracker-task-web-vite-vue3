@@ -2,6 +2,7 @@
     <div class="create-task-form">
         <input
             class="create-task-form__input"
+            placeholder="Task name"
             :value="inputValue"
             @input="onInput($event.target.value)"
         />
@@ -14,7 +15,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-import { useCreateTask } from './model'
+import { useCreateTask } from '../model'
 
 const { createTask } = useCreateTask()
 

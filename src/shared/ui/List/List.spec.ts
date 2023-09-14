@@ -3,7 +3,11 @@ import List from './List.vue'
 
 describe('shared/ui/List component', () => {
     it('Snapshot', () => {
-        const { html } = render(List)
+        const { html } = render(List, {
+            props: {
+                list: [],
+            },
+        })
 
         expect(html()).toMatchSnapshot()
     })
