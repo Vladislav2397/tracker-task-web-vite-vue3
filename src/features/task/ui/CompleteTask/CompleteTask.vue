@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import { Action } from '../../../shared/ui/Action'
-import { Task } from '../../../shared/shared-kernel'
+import { Action } from '../../../../shared/ui/Action'
+import { Task } from '../../../../shared/shared-kernel'
 
 export default {
     components: {
@@ -14,7 +14,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-import { useToggleTask } from '../model'
+import { useToggleTask } from '../../model'
 
 const { toggleTask } = useToggleTask()
 const props = defineProps<{ task: Task }>()

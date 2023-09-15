@@ -15,7 +15,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-import { useCreateTask } from '../model'
+import { useCreateTask } from '../../model'
 
 const { createTask } = useCreateTask()
 

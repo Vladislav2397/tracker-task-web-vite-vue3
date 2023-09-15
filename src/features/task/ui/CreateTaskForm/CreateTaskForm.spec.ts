@@ -8,7 +8,7 @@ vi.setSystemTime(1694669222291)
 
 const createTask = vi.fn()
 
-vi.mock('../model', () => ({
+vi.mock('../../model', () => ({
     useCreateTask: () => ({
         createTask,
     }),

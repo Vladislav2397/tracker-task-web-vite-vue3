@@ -1,5 +1,5 @@
-import CompleteTask from './ui/CompleteTask.vue'
-import RemoveTask from './ui/RemoveTask.vue'
-import CreateTaskForm from './ui/CreateTaskForm.vue'
+import { CompleteTask } from './ui/CompleteTask'
+import { RemoveTask } from './ui/RemoveTask'
+import { CreateTaskForm } from './ui/CreateTaskForm'
 
 export { CompleteTask, RemoveTask, CreateTaskForm }

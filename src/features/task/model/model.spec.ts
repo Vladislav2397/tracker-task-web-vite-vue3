@@ -1,7 +1,6 @@
-import { setActivePinia, createPinia } from 'pinia'
-import { vi, describe, it, beforeEach } from 'vitest'
+import { vi, describe, it } from 'vitest'
 
-import { taskModel } from '../../entities/task'
+import { taskModel } from '../../../entities/task'
 import { useCreateTask, useToggleTask, useRemoveTask } from './model'
 
 const SYSTEM_TIME = 1694669222291
@@ -22,10 +21,6 @@ const implementation = {
 vi.spyOn(taskModel, 'useTaskStore').mockImplementation(() => implementation)
 
 describe('features/task model', () => {
-    beforeEach(() => {
-        setActivePinia(createPinia())
-    })
-
     it('should call addTask fn with created task', async () => {
         const name = 'Task name'
         const { createTask } = useCreateTask()

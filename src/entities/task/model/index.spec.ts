@@ -1,20 +1,23 @@
 import { setActivePinia, createPinia } from 'pinia'
 import { useTaskStore, createTask, toggleTask } from './index'
+import { vi } from 'vitest'
+
+vi.setSystemTime(1694669222291)
 
 const initialValue = [
     {
         id: '1',
-        isCompleted: false,
         name: 'first task',
+        isCompleted: false,
     },
     {
         id: '2',
-        isCompleted: true,
         name: 'second task',
+        isCompleted: true,
     },
 ]
 
-describe('entities/task model', () => {
+describe('entities/task module', () => {
     beforeEach(() => {
         // creates a fresh pinia and make it active so it's automatically picked
         // up by any useStore() call without having to pass it to it:
@@ -53,6 +56,44 @@ describe('entities/task model', () => {
         expect(taskStore.list).toStrictEqual([initialValue[1]])
     })
 
-    it.todo('should return new task by createTask fn')
-    it.todo('should toggle `isCompleted` for gived task in toggleTask fn')
+    it('should return only checked tasks', () => {
+        const taskStore = useTaskStore()
+
+        expect(taskStore.completed).toStrictEqual([initialValue[1]])
+    })
+
+    it('should return only unchecked tasks', () => {
+        const taskStore = useTaskStore()
+
+        expect(taskStore.uncompleted).toStrictEqual([initialValue[0]])
+    })
+})
+
+describe('entities/task model', () => {
+    it('should return new task by createTask fn', () => {
+        const task1 = createTask('name')
+        expect(task1).toStrictEqual({
+            id: '1694669222291',
+            name: 'name',
+            isCompleted: false,
+        })
+
+        const task2 = createTask('name', '1')
+        expect(task2).toStrictEqual({
+            id: '1',
+            name: 'name',
+            isCompleted: false,
+        })
+    })
+
+    it('should toggle `isCompleted` for gived task in toggleTask fn', () => {
+        const task = createTask('name')
+        const updatedTask = toggleTask(task)
+
+        expect(updatedTask).toStrictEqual({
+            id: '1694669222291',
+            name: 'name',
+            isCompleted: true,
+        })
+    })
 })

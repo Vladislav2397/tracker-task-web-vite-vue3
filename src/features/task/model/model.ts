@@ -1,5 +1,5 @@
-import { taskModel } from '../../entities/task'
-import { Task } from '../../shared/shared-kernel'
+import { taskModel } from '../../../entities/task'
+import { Task } from '../../../shared/shared-kernel'
 
 const api = {
     task: {

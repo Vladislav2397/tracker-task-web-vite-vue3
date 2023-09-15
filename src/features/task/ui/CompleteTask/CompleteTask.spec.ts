@@ -2,28 +2,28 @@ import { fireEvent, render } from '@testing-library/vue'
 import { setActivePinia, createPinia } from 'pinia'
 import { vi, describe, it, beforeEach } from 'vitest'
 
-import RemoveTask from './RemoveTask.vue'
+import CompleteTask from './CompleteTask.vue'
 
-const removeTask = vi.fn()
+const toggleTask = vi.fn()
 
-vi.mock('../model', () => ({
-    useRemoveTask: () => ({
-        removeTask,
+vi.mock('../../model', () => ({
+    useToggleTask: () => ({
+        toggleTask,
     }),
 }))
 
-describe('features/task RemoveTask component', () => {
+describe('features/task CompleteTask component', () => {
     beforeEach(() => {
         setActivePinia(createPinia())
     })
 
-    it('should call removeTask fn with task in props', async () => {
+    it('should call toggleTask fn with task in props', async () => {
         const task = {
             id: '123213124124',
             name: 'task name',
             isCompleted: false,
         }
-        const { getByTestId } = render(RemoveTask, {
+        const { getByTestId } = render(CompleteTask, {
             props: {
                 task,
             },
@@ -32,6 +32,6 @@ describe('features/task RemoveTask component', () => {
         const action = getByTestId('Action')
         await fireEvent.click(action)
 
-        expect(removeTask).toHaveBeenCalledWith(task)
+        expect(toggleTask).toHaveBeenCalledWith(task)
     })
 })
