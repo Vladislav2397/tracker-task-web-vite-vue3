@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`entities/task TaskRow component > Snapshot for view task 1`] = `
+"<div data-v-3516047c=\\"\\" class=\\"task-row\\">
+  <h4 data-v-3516047c=\\"\\" class=\\"task-row__name\\">task name</h4>
+  <div data-v-3516047c=\\"\\" class=\\"task-row__actions\\"><button>Action</button></div>
+</div>"
+`;
+
+exports[`entities/task TaskRow component > Snapshot for view task 2`] = `
+"<div data-v-3516047c=\\"\\" class=\\"task-row\\">
+  <h4 data-v-3516047c=\\"\\" class=\\"task-row__name task-row__name--through\\">task name</h4>
+  <div data-v-3516047c=\\"\\" class=\\"task-row__actions\\"><button>Action</button></div>
+</div>"
+`;
