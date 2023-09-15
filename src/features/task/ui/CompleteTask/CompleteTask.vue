@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import { Action } from '../../../../shared/ui/Action'
-import { Task } from '../../../../shared/shared-kernel'
+import { Action } from '@/shared/ui/Action'
+import { Task } from '@/shared/shared-kernel'
 
 export default {
     components: {

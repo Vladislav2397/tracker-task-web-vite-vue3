@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { Action } from '../../../../shared/ui/Action'
+import { Action } from '@/shared/ui/Action'
 
 export default {
     components: {

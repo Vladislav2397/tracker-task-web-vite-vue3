@@ -1,5 +1,5 @@
-import { taskModel, taskApi } from '../../../entities/task'
-import { Task } from '../../../shared/shared-kernel'
+import { taskModel, taskApi } from '@/entities/task'
+import { Task } from '@/shared/shared-kernel'
 
 export const useCreateTask = () => {
     const taskStore = taskModel.useTaskStore()

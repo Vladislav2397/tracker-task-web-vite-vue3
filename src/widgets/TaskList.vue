@@ -12,11 +12,11 @@
 </template>
 
 <script lang="ts">
-import { CompleteTask, RemoveTask } from '../features/task'
+import { CompleteTask, RemoveTask } from '@/features/task'
 
-import { TaskRow } from '../entities/task'
+import { TaskRow } from '@/entities/task'
 
-import { List } from '../shared/ui/List'
+import { List } from '@/shared/ui/List'
 
 export default {
     components: {
@@ -30,7 +30,7 @@ export default {
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { taskModel } from '../entities/task'
+import { taskModel } from '@/entities/task'
 
 const props = withDefaults(
     defineProps<{ filter?: 'all' | 'completed' | 'uncompleted' }>(),

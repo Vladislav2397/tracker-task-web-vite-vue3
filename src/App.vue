@@ -17,12 +17,12 @@
 </template>
 
 <script lang="ts">
-import Header from './widgets/Header.vue'
-import TaskList from './widgets/TaskList.vue'
+import Header from '@/widgets/Header.vue'
+import TaskList from '@/widgets/TaskList.vue'
 
-import { CreateTaskForm } from './features/task'
+import { CreateTaskForm } from '@/features/task'
 
-import { Section } from './shared/ui/Section'
+import { Section } from '@/shared/ui/Section'
 
 export default {
     components: {
