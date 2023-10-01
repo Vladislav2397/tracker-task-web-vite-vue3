@@ -13,11 +13,15 @@ export default {
 </script>
 
 <script lang="ts" setup>
+import { Task } from 'vitest'
 import { useRemoveTask } from '../../model'
+import { taskModel } from '@/entities/task'
 
-const props = defineProps<{ task: { id: number } }>()
+const taskStore = taskModel.useTaskStore()
 
-const { removeTask } = useRemoveTask()
+const props = defineProps<{ task: Pick<Task, 'id'> }>()
+
+const { removeTask } = useRemoveTask({ taskStore })
 
 function onClick() {
     removeTask(props.task)

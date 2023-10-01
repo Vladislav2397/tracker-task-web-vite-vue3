@@ -2,7 +2,9 @@ import { setActivePinia, createPinia } from 'pinia'
 import { useTaskStore, createTask, toggleTask } from './index'
 import { vi } from 'vitest'
 
-vi.setSystemTime(1694669222291)
+const SYSTEM_TIMESTAMP = 1694669222291
+const GENERATED_ID = `${SYSTEM_TIMESTAMP}`
+vi.setSystemTime(SYSTEM_TIMESTAMP)
 
 const initialValue = [
     {
@@ -71,28 +73,32 @@ describe('entities/task module', () => {
 
 describe('entities/task model', () => {
     it('should return new task by createTask fn', () => {
-        const task1 = createTask('name')
+        const name = 'name'
+
+        const task1 = createTask(name)
         expect(task1).toStrictEqual({
-            id: '1694669222291',
-            name: 'name',
+            id: GENERATED_ID,
+            name,
             isCompleted: false,
         })
 
-        const task2 = createTask('name', '1')
+        const id = '1'
+        const task2 = createTask(name, id)
         expect(task2).toStrictEqual({
-            id: '1',
-            name: 'name',
+            id,
+            name,
             isCompleted: false,
         })
     })
 
     it('should toggle `isCompleted` for gived task in toggleTask fn', () => {
-        const task = createTask('name')
+        const name = 'name'
+        const task = createTask(name)
         const updatedTask = toggleTask(task)
 
         expect(updatedTask).toStrictEqual({
-            id: '1694669222291',
-            name: 'name',
+            id: GENERATED_ID,
+            name,
             isCompleted: true,
         })
     })

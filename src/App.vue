@@ -45,7 +45,7 @@ export default {
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    /* gap: 12px; */
     max-width: 650px;
     margin-left: auto;
     margin-right: auto;

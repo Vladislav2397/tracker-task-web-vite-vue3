@@ -1,0 +1,20 @@
+.action {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+}
+
+.action--success {
+    background-color: green;
+}
+.action--critical {
+    background-color: red;
+}
+
+@media (min-width: 768px) {
+    .action {
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+    }
+}

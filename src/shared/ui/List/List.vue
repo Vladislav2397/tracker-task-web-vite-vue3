@@ -1,11 +1,11 @@
 <template>
-    <div class="list">
-        <slot v-for="item in props.list" :item="item" />
+    <div class="list" v-auto-animate>
+        <slot v-for="item in props.list" :key="props.keyExtractor(item)" :item="item" />
     </div>
 </template>
 
 <script lang="ts" setup>
-const props = defineProps<{ list: any[] }>()
+const props = defineProps<{ list: any[], keyExtractor: (item: any) => string }>()
 </script>
 
 <style scoped>

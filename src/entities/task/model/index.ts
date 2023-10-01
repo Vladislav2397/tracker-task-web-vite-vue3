@@ -43,7 +43,7 @@ export const useTaskStore = defineStore('task', () => {
         })
     }
 
-    function removeTask(task: Task) {
+    function removeTask(task: Pick<Task, 'id'>) {
         list.value = list.value.filter((item) => item.id !== task.id)
     }
 

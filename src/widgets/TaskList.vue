@@ -1,5 +1,5 @@
 <template>
-    <List :list="list">
+    <List :list="list" :keyExtractor="({ id }) => id">
         <template #default="{ item }">
             <TaskRow :task="item">
                 <div class="row">
@@ -43,12 +43,12 @@ const taskStore = taskModel.useTaskStore()
 
 const list = computed(() => {
     switch (props.filter) {
-        case 'uncompleted':
-            return taskStore.uncompleted
-        case 'completed':
-            return taskStore.completed
-        default:
-            return taskStore.list
+    case 'uncompleted':
+        return taskStore.uncompleted
+    case 'completed':
+        return taskStore.completed
+    default:
+        return taskStore.list
     }
 })
 </script>

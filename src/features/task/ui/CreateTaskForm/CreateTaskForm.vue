@@ -4,7 +4,7 @@
             class="create-task-form__input"
             placeholder="Task name"
             :value="inputValue"
-            @input="onInput($event.target.value)"
+            @input="onInput"
         />
         <button class="create-task-form__button" @click="onClick">
             Create task
@@ -16,11 +16,16 @@
 import { ref } from 'vue'
 
 import { useCreateTask } from '../../model'
+import { taskModel } from '@/entities/task'
 
-const { createTask } = useCreateTask()
+const taskStore = taskModel.useTaskStore()
+const { createTask } = useCreateTask({ taskStore })
 
 const inputValue = ref('')
-function onInput(value: string) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function onInput(event: any) {
+    const value = (event.target && event.target.value) || ''
+
     inputValue.value = value
 }
 

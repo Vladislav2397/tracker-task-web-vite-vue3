@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { Action } from '@/shared/ui/Action'
-import { Task } from '@/shared/shared-kernel'
+import type { Task } from '@/shared/shared-kernel'
 
 export default {
     components: {
@@ -15,8 +15,10 @@ export default {
 
 <script lang="ts" setup>
 import { useToggleTask } from '../../model'
+import { taskModel } from '@/entities/task'
 
-const { toggleTask } = useToggleTask()
+const taskStore = taskModel.useTaskStore()
+const { toggleTask } = useToggleTask({ taskStore })
 const props = defineProps<{ task: Task }>()
 
 function onClick() {

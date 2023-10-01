@@ -1,8 +1,9 @@
 import { taskModel, taskApi } from '@/entities/task'
+import { TaskStore } from '@/entities/task/model/types'
 import { Task } from '@/shared/shared-kernel'
 
-export const useCreateTask = () => {
-    const taskStore = taskModel.useTaskStore()
+export const useCreateTask = ({ taskStore }: { taskStore: Pick<TaskStore, 'addTask'> }) => {
+    // const taskStore = taskModel.useTaskStore()
 
     async function createTask(taskName: string) {
         const response = await taskApi.createTask(taskName)
@@ -23,8 +24,8 @@ export const useCreateTask = () => {
     }
 }
 
-export const useToggleTask = () => {
-    const taskStore = taskModel.useTaskStore()
+export const useToggleTask = ({ taskStore }: { taskStore: Pick<TaskStore, 'updateTask'> }) => {
+    // const taskStore = taskModel.useTaskStore()
 
     async function toggleTask(task: Task) {
         const updatedTask = taskModel.toggleTask(task)
@@ -47,10 +48,10 @@ export const useToggleTask = () => {
     }
 }
 
-export const useRemoveTask = () => {
-    const taskStore = taskModel.useTaskStore()
+export const useRemoveTask = ({ taskStore }: { taskStore: Pick<TaskStore, 'removeTask'> }) => {
+    // const taskStore = taskModel.useTaskStore()
 
-    async function removeTask(task: Task) {
+    async function removeTask(task: Pick<Task, 'id'>) {
         const response = await taskApi.removeTask(task.id)
 
         if (!response.status) {
