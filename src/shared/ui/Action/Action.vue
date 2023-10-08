@@ -2,8 +2,15 @@
     <div :class="classes" data-testid="Action"></div>
 </template>
 
+<script lang="ts">
+export default {
+    name: 'ActionComponent'
+}
+</script>
+
 <script lang="ts" setup>
 import { computed } from 'vue'
+
 const props = withDefaults(defineProps<{ view: 'success' | 'critical' }>(), {
     view: 'success',
 })

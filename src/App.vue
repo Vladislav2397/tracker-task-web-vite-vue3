@@ -1,17 +1,17 @@
 <template>
     <div class="app">
-        <Header />
+        <HeaderComponent />
 
         <div class="app__content">
-            <Section>
+            <SectionComponent>
                 <CreateTaskForm />
-            </Section>
-            <Section>
+            </SectionComponent>
+            <SectionComponent>
                 <TaskList filter="uncompleted" />
-            </Section>
-            <Section>
+            </SectionComponent>
+            <SectionComponent>
                 <TaskList filter="completed" />
-            </Section>
+            </SectionComponent>
         </div>
     </div>
 </template>
@@ -26,8 +26,8 @@ import { Section } from '@/shared/ui/Section'
 
 export default {
     components: {
-        Header,
-        Section,
+        'HeaderComponent': Header,
+        'SectionComponent': Section,
         TaskList,
         CreateTaskForm,
     },

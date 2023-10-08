@@ -3,7 +3,9 @@ import { describe, it } from 'vitest'
 
 import TaskRow from './TaskRow.vue'
 
-const map = [
+import { Task } from '@/shared/shared-kernel.ts'
+
+const map: Task[] = [
     {
         id: '123213124124',
         name: 'task name',
@@ -20,7 +22,7 @@ describe('entities/task TaskRow component', () => {
     it.each(map)('Snapshot for view task', async (task) => {
         const { html } = render(TaskRow, {
             props: {
-                task,
+                task
             },
             slots: {
                 default: ['<button>Action</button>'],

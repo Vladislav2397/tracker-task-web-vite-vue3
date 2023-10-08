@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { Task } from '../../../shared/shared-kernel'
+import type { Task } from '@/shared/shared-kernel'
 
 export function createTask(name: string, id?: string) {
     return {
