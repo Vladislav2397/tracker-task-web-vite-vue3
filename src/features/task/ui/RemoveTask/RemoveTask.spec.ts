@@ -5,10 +5,13 @@ import { vi, describe, it, beforeEach } from 'vitest'
 import RemoveTask from './RemoveTask.vue'
 
 const removeTask = vi.fn()
+// const useRemoveTask = vi.fn(() => ({
+//     removeTask,
+// }))
 
 vi.mock('../../model', () => ({
     useRemoveTask: () => ({
-        removeTask,
+        removeTask
     }),
 }))
 
@@ -35,3 +38,6 @@ describe('features/task RemoveTask component', () => {
         expect(removeTask).toHaveBeenCalledWith(task)
     })
 })
+
+// describe('feature/task RemoveTask type', () => {
+// })

@@ -6,6 +6,7 @@ describe('shared/ui/List component', () => {
         const { html } = render(List, {
             props: {
                 list: [],
+                keyExtractor: (item) => item
             },
         })
 

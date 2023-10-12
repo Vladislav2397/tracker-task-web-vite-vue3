@@ -16,10 +16,10 @@
 import { ref } from 'vue'
 
 import { useCreateTask } from '../../model'
-import { taskModel } from '@/entities/task'
+import { taskModel, taskApi } from '@/entities/task'
 
 const taskStore = taskModel.useTaskStore()
-const { createTask } = useCreateTask({ taskStore })
+const { createTask } = useCreateTask({ taskStore, taskApi })
 
 const inputValue = ref('')
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

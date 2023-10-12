@@ -3,25 +3,27 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
 import { Action } from '@/shared/ui/Action'
 
-export default {
+export default defineComponent({
+    name: 'RemoveTask',
     components: {
         Action,
     },
-}
+})
 </script>
 
 <script lang="ts" setup>
-import { Task } from 'vitest'
-import { useRemoveTask } from '../../model'
-import { taskModel } from '@/entities/task'
+import { defineProps } from 'vue'
+import { useRemoveTask } from '../../model/index'
+import { taskModel, taskApi } from '@/entities/task'
 
 const taskStore = taskModel.useTaskStore()
 
 const props = defineProps<{ task: Pick<Task, 'id'> }>()
 
-const { removeTask } = useRemoveTask({ taskStore })
+const { removeTask } = useRemoveTask({ taskStore, taskApi })
 
 function onClick() {
     removeTask(props.task)

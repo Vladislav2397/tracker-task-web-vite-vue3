@@ -15,10 +15,10 @@ export default {
 
 <script lang="ts" setup>
 import { useToggleTask } from '../../model'
-import { taskModel } from '@/entities/task'
+import { taskModel, taskApi } from '@/entities/task'
 
 const taskStore = taskModel.useTaskStore()
-const { toggleTask } = useToggleTask({ taskStore })
+const { toggleTask } = useToggleTask({ taskStore, taskApi })
 const props = defineProps<{ task: Task }>()
 
 function onClick() {

@@ -1,8 +1,14 @@
-import { taskModel, taskApi } from '@/entities/task'
+import { taskModel } from '@/entities/task'
+import { TaskAPI } from '@/entities/task/api/types'
 import { TaskStore } from '@/entities/task/model/types'
 import { Task } from '@/shared/shared-kernel'
 
-export const useCreateTask = ({ taskStore }: { taskStore: Pick<TaskStore, 'addTask'> }) => {
+export type Dependencies = {
+    taskStore: Pick<TaskStore, 'addTask' | 'updateTask' | 'removeTask'>
+    taskApi: Pick<TaskAPI, 'createTask' | 'updateTask' | 'removeTask'>
+}
+
+export const useCreateTask = ({ taskStore, taskApi }: Dependencies) => {
     // const taskStore = taskModel.useTaskStore()
 
     async function createTask(taskName: string) {
@@ -24,7 +30,7 @@ export const useCreateTask = ({ taskStore }: { taskStore: Pick<TaskStore, 'addTa
     }
 }
 
-export const useToggleTask = ({ taskStore }: { taskStore: Pick<TaskStore, 'updateTask'> }) => {
+export const useToggleTask = ({ taskStore, taskApi }: Dependencies) => {
     // const taskStore = taskModel.useTaskStore()
 
     async function toggleTask(task: Task) {
@@ -36,7 +42,7 @@ export const useToggleTask = ({ taskStore }: { taskStore: Pick<TaskStore, 'updat
 
         if (!response.status) {
             throw new Error(
-                `update task with name ${task} is not success (API_ERROR)`
+                `update task with name ${task.id} is not success (API_ERROR)`
             )
         }
 
@@ -48,14 +54,14 @@ export const useToggleTask = ({ taskStore }: { taskStore: Pick<TaskStore, 'updat
     }
 }
 
-export const useRemoveTask = ({ taskStore }: { taskStore: Pick<TaskStore, 'removeTask'> }) => {
+export const useRemoveTask = ({ taskStore, taskApi }: Dependencies) => {
     // const taskStore = taskModel.useTaskStore()
 
     async function removeTask(task: Pick<Task, 'id'>) {
         const response = await taskApi.removeTask(task.id)
 
         if (!response.status) {
-            throw new Error(`remove task ${task} is not success (API_ERROR)`)
+            throw new Error(`remove task with id ${task.id} is not success (API_ERROR)`)
         }
 
         taskStore.removeTask(task)
