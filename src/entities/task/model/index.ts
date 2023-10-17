@@ -2,20 +2,9 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import type { Task } from '@/shared/shared-kernel'
 
-export function createTask(name: string, id?: string) {
-    return {
-        id: id ?? `${Date.now()}`,
-        name,
-        isCompleted: false,
-    }
-}
+import * as model from './logic'
 
-export function toggleTask(task: Task) {
-    return {
-        ...task,
-        isCompleted: !task.isCompleted,
-    }
-}
+export const { createTask, toggleTask } = model
 
 export const useTaskStore = defineStore('task', () => {
     const list = ref<Task[]>([
@@ -32,27 +21,19 @@ export const useTaskStore = defineStore('task', () => {
     ])
 
     function addTask(task: Task) {
-        list.value.push(task)
+        list.value = model.addTask(list.value, task)
     }
 
     function updateTask(task: Task) {
-        list.value = list.value.map((item) => {
-            if (item.id !== task.id) return item
-
-            return task
-        })
+        list.value = model.updateTask(list.value, task)
     }
 
     function removeTask(task: Pick<Task, 'id'>) {
-        list.value = list.value.filter((item) => item.id !== task.id)
+        list.value = model.removeTask(list.value, task)
     }
 
-    const completed = computed(() =>
-        list.value.filter(({ isCompleted }) => isCompleted)
-    )
-    const uncompleted = computed(() =>
-        list.value.filter(({ isCompleted }) => !isCompleted)
-    )
+    const completed = computed(() => model.getCompletedTasks(list.value))
+    const uncompleted = computed(() => model.getUncompletedTasks(list.value))
 
     return {
         list,

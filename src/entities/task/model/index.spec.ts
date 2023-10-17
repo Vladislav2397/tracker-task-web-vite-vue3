@@ -1,5 +1,6 @@
 import { setActivePinia, createPinia } from 'pinia'
-import { useTaskStore, createTask, toggleTask } from './index'
+import { useTaskStore } from './index'
+import { createTask, toggleTask } from './logic'
 import { vi } from 'vitest'
 
 const SYSTEM_TIMESTAMP = 1694669222291
